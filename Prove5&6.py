@@ -13,7 +13,7 @@ def LandScenario():
         if shelter =="fire":
             print("you light a fire but this draws attention from a group of traders nearby. They kill you. \n\n----GAME OVER----")
             quit()
-        else:
+        elif shelter == "sleep":
             print("You never wake up \n\n----GAME OVER----")
             quit()
     elif landChoiceOne == "food":
@@ -26,9 +26,9 @@ def LandScenario():
             if leader == "stay":
                 print("Congratulations you win!")
                 quit()
-            else:
+            elif leader == "escape":
                 print("your crew rebels against you \n\n----GAME OVER----")
-        else:   
+        elif smoke == "fight":   
             print("You die in the 1V1 battle \n\n----GAME OVER----")
     #water Scenario
 
@@ -40,17 +40,17 @@ def WaterScenario():
     if waterChoiceOne == "chest":
         print("\n\nit is booby trapped and you do not survive. \n\n----GAME OVER----")
         quit()
-    else:
+    elif waterChoiceOne == "map":
         map = input("\nYou chose map. \nDo you seek out the red X on the map or do you head towards the LAND? \n\n").lower()
         if map == "x":
             x = input("\nYou chose red X. \nyou find a ton of treasure under the water in a sunken ship. \nDo you LOAD the treasure on the raft or take the inflatable LIFEBOAT?\n").lower()
             if x == "load":
                 print("You make it some distance before your raft sinks. \nYou stay afloat a few hours longer but alas \n\n----GAME OVER----")
                 quit()
-            else:
+            elif x == "lifeboat":
                 print("you leave the treasure behind but save your life! congratulations you survive and WIN!!!")
                 quit()
-        else:
+        elif map == "land":
             print("You head towards land and you survive! you win!!!")
             quit()
 
