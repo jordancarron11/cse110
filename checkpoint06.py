@@ -29,6 +29,6 @@ else: # This means its a small loan
             loan_decision = False
 
 if loan_decision:
-    print("The decision is yes. This is a good loan.")
+    print("You should loan")
 else:
-    print("The decision is no. You should not loan this money.")
+    print("Do not loan")
