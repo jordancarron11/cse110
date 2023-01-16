@@ -16,7 +16,7 @@ if num2 > num1:
 else:
     print("number 2 is not greater than number 1 ")
 
-favAnimal = input("What is your favorite animal? ")
+favAnimal = input("\n\nWhat is your favorite animal? ")
 if favAnimal == "turtle":
     print("Mine too!")
 else: 
