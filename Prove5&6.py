@@ -3,7 +3,7 @@
 print("Welcome to the text based adventure! \n")
 start_position =input("Do you want to start out on LAND or on WATER? ").lower()
 
-
+#I decided to add a scenario for land and water I didn't spend as much time on water just because the options got a bit tedious but adding them as functions was a fun expermiment 
 
 def LandScenario():
     #choice number 1 shelter, food or smoke
