@@ -1,3 +1,5 @@
+#checkpoint 7
+
 x = int(input("Please type a positive number: "))
 
 while x <= 0:
