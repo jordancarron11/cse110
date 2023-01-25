@@ -1,51 +1,58 @@
 import random
-
-play = "yes"
-start = '------'
-correctWord = "jordan"
-userWordChoice = input("What is your five letter word? ")
-
-
-def correctLetterRightPlace():
-    if start[0] == userWordChoice [0]:
-        start[0] = userWordChoice[0].upper()
-    elif start[1] == userWordChoice[1]:
-        start[1] = userWordChoice[1].upper()
-    elif start[2] == userWordChoice [2]:
-        start[2] = userWordChoice [2].upper()
-    if start[3] == userWordChoice [3]:
-        start[3] = userWordChoice[3].upper()
-    elif start[4] == userWordChoice[4]:
-        start[4] = userWordChoice[4].upper()
-    return start
-
-def correctLetterwrongPlace9():
-    if correctWord[0] == userWordChoice [1,2,3,4]:
-        start[1,2,3,4] = userWordChoice[0].lower()
-    elif correctWord[1] == userWordChoice[0,2,3,4]:
-        start[0,2,3,4] = userWordChoice[1].lower()
-    elif correctWord[2] == userWordChoice [0,1,3,4]:
-        start[0,1,3,4] = userWordChoice [2].lower()
-    if correctWord[3] == userWordChoice [0,1,2,4]:
-        start[0,1,2,4] = userWordChoice[3].lower()
-    elif start[4] == userWordChoice[0,1,2,3]:
-        correctWord[0,1,2,3] = userWordChoice[4].lower()    
-    return start
-
-while userWordChoice != correctWord:
-    if userWordChoice[0,1,2,3,4] == correctWord [0,1,2,3,4]:
-        correctLetterRightPlace()
-
+import dictionary
+play_again ='yes'
+while play_again == 'yes':
     
 
-    
-    
-    
-print(f"Congratualtions! you guessed the word which was {correctWord}")
-playAgain = input("Want to play again (yes/no)? ")
-if playAgain == 'yes':
-        play == 'yes'
-else:
-        play == 'no'
-        
-    
+   
+
+    print('Welcome to the word guessing game!\n')
+    difficulty = input("Which difficulty do you want? easy(e), normal(n), hard(h) type (e/n/h): ").lower()
+    if difficulty == 'e':
+        secret_word = random.choice(dictionary.Five)
+    elif difficulty == 'n':
+        secret_word = random.choice(dictionary.Six)
+    elif difficulty == 'h':
+        secret_word = random.choice(dictionary.Seven)
+    else: 
+        print("Sorry that is not a valid imput please enter either e for easy n for normal or h for hard")
+        difficulty = input("Which difficulty do you want? easy(e), normal(n), hard(h) type (e/n/h): ").lower()
+    hint = ' _ ' * len(secret_word)    
+    print(f'Your hint is: {hint}')
+
+    guess = input('What is your guess? ')
+    guess_count = 0
+    guessed_correctly = False
+    def process_guess(secret_word, guess):
+        position = 0
+        hint = ''
+        for letter in guess:
+            if letter == secret_word[position]:
+                hint += f' {letter.upper()}'
+            elif letter in secret_word:
+                hint += f' {letter.lower()}'
+            else:
+                hint += ' _ '
+            position += 1
+        print(f'Your hint is: {hint}')
+        return hint
+
+    while guess.lower() != secret_word:
+
+        if len(guess) != len(secret_word):
+            print('\nWelcome to the word guessing game!\n')
+            print(f'Sorry, the guess must have {len(secret_word)} letters')
+            print('Press enter to continue.')
+            input()
+            print(f'\nYour hint is: {hint}')
+            guess = input('What is your guess? ')
+            guess_count += 1
+        else:
+            print('\nWelcome to the word guessing game!\n')
+            guessed_correctly = process_guess(secret_word, guess)
+            guess = input('What is your guess? ')
+            guess_count += 1
+   
+    print('\nCongratulations! You guessed it!')
+    print(f'It took you {guess_count} guesses.\n')
+    play_again = input("would you like to play again?(yes/no)")
