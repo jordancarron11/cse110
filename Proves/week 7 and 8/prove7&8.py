@@ -8,11 +8,11 @@ while play_again == 'yes':
 
     print('Welcome to the word guessing game!\n')
     difficulty = input("Which difficulty do you want? easy(e), normal(n), hard(h) type (e/n/h): ").lower()
-    if difficulty == 'e':
+    if difficulty == 'e' or difficulty == 'easy':
         secret_word = random.choice(dictionary.Five)
-    elif difficulty == 'n':
+    elif difficulty == 'n' or difficulty == 'normal':
         secret_word = random.choice(dictionary.Six)
-    elif difficulty == 'h':
+    elif difficulty == 'h' or difficulty == 'hard':
         secret_word = random.choice(dictionary.Seven)
     else: 
         print("Sorry that is not a valid imput please enter either e for easy n for normal or h for hard")
