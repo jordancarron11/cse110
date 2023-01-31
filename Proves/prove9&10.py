@@ -3,9 +3,11 @@ print("\nWelcome to the shopping cart program!")
 NewPage = '\n\n\n\n\n\n\n\n\n\n\n\n'
 items = []
 costs = []
+sum = costs
 itemAndCost = []
 def  Menu():
     print("\nPlease choose from the following options:\n1. Add Item\n2. Display Items\n3. Remove Item\n4. Calculate total\n5. Quit")
+
 #adds new items 
 def Add():
     addItem = input(f"{NewPage}What item do you want to add? ")
@@ -14,10 +16,12 @@ def Add():
     costs.append(addCost) 
     addItemWCost = (f'Item: {addItem} Cost ${addCost:.2f}')
     itemAndCost.append(addItemWCost)
+
 #displays the list of item
 def Display():
     for item in itemAndCost:
         print (f"    {item}")
+
 #displays list of items and then gives the option for user to remove them based on number
 def Remove():
     remove = 'play'
@@ -27,13 +31,25 @@ def Remove():
             print (f"{num}. {item}")
             num +=1
         pickItem = int(input("Type the number of the item you want to remove or press 0 to quit "))
-        if pickItem >= len(itemAndCost) and pickItem != 0:
+        if pickItem <= len(itemAndCost) and pickItem != 0:
             del(itemAndCost[pickItem-1])
+            del(sum[pickItem-1])
+        elif pickItem == 1:
+            del(itemAndCost[0])
+            del(sum[0])
         elif pickItem == 0:
             remove = "quit"
         else:
             print(f"{NewPage}Sorry that is not a valid imput \n")
-          
+
+def CalculateTotal():
+    print("Your total is:")
+    
+    total = 0
+    for index, item in enumerate(sum):
+        total += item
+    print(f'${total:.2f}')  
+
 userChoice =''
 while userChoice != '5' or 'quit':
     Menu()
@@ -45,6 +61,8 @@ while userChoice != '5' or 'quit':
         Display()
     elif userChoice == '3' or userChoice == 'remove':
         Remove()
+    elif userChoice == '4' or userChoice == 'calculate total':
+        CalculateTotal()
     elif userChoice == '5' or userChoice == 'quit':
         print("Goodbye!")
         quit()
